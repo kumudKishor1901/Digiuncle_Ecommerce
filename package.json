@@ -1,0 +1,20 @@
+{
+  "name": "digiuncle_ecommerce",
+  "version": "1.0.0",
+  "description": "Digiuncle Ecommerce Project Backend API's",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ESPSAdmin/Digiuncle_Ecommerce.git"
+  },
+  "author": "Kumud Kishor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ESPSAdmin/Digiuncle_Ecommerce/issues"
+  },
+  "homepage": "https://github.com/ESPSAdmin/Digiuncle_Ecommerce#readme"
+}
