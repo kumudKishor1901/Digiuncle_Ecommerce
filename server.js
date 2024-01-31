@@ -1,6 +1,7 @@
 import express, { json } from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import jwt from "jsonwebtoken";
 import swagger from "swagger-ui-express";
 import userRouter from "./src/features/users/user_routes.js";
@@ -8,6 +9,7 @@ import apiDocs from "./swagger.json" assert { type: "json" };
 import dbConnection from "./src/config/db_connection.js";
 // Instantiating Express server
 const server = express();
+server.use(cors);
 try {
   dotenv.config({ path: "src/config/.env" });
 } catch (err) {
