@@ -9,7 +9,7 @@ import dbConnection from "./src/config/db_connection.js";
 // Instantiating Express server
 const server = express();
 try {
-  dotenv.config();
+  dotenv.config({ path: "src/config/.env" });
 } catch (err) {
   console.log("Error loading .env file", err);
 }
@@ -22,7 +22,7 @@ server.use("/api-docs", swagger.serve, swagger.setup(apiDocs));
 server.use("/api/users", userRouter);
 
 // Server Port
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 server.listen(port, () => {
   dbConnection();
   console.log("Server is running on port", port);

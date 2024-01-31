@@ -18,4 +18,5 @@ userRouter.get("/home", auth, (req, res) => {
   });
 });
 
+userRouter.get("/logout", userController.logout);
 export default userRouter;

@@ -28,7 +28,7 @@ export default class UserController {
       let credentials = { email, password };
       let result = await modelInstance.isExist(credentials);
       if (result) {
-        // creating json web token
+        // creating json web token for cookie
         const token = jwt.sign(
           {
             userId: result._id,
@@ -36,6 +36,12 @@ export default class UserController {
           },
           "s1l3vrfi5h"
         );
+
+        // creating cookie for session
+        res.cookie("token", token, {
+          httpOnly: true,
+          expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+        });
 
         res.status(200).json({
           success: true,
@@ -56,5 +62,16 @@ export default class UserController {
         error: error.message,
       });
     }
+  }
+
+  logout(req, res) {
+    res.cookie("token", null, {
+      httpOnly: true,
+      expires: new Date(Date.now()),
+    });
+    res.status(200).json({
+      success: true,
+      message: "Logout Successfully",
+    });
   }
 }

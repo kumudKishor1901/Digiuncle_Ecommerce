@@ -2,8 +2,12 @@ import userModel from "./user_schema.js";
 
 export default class UserModel {
   async add(user) {
-    const result = await userModel.create(user);
-    return result;
+    try {
+      const result = await userModel.create(user);
+      return result;
+    } catch (err) {
+      console.log("Error populating record to database");
+    }
   }
   async isExist(data) {
     try {
