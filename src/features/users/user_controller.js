@@ -6,9 +6,9 @@ const modelInstance = new UserModel();
 export default class UserController {
   //   To register user in the database use below method
   register(req, res) {
-    const { fname, lname, email, mobile, password } = req.body;
-    let user = { fname, lname, email, mobile, password };
-    let result = modelInstance.add(user);
+    // const { fname, lname, email, mobile, password } = req.body;
+    // let user = { fname, lname, email, mobile, password };
+    let result = modelInstance.add(req.body);
     if (!result) {
       res
         .status(400)

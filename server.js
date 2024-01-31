@@ -9,7 +9,7 @@ import apiDocs from "./swagger.json" assert { type: "json" };
 import dbConnection from "./src/config/db_connection.js";
 // Instantiating Express server
 const server = express();
-server.use(cors);
+server.use(cors());
 try {
   dotenv.config({ path: "src/config/.env" });
 } catch (err) {
