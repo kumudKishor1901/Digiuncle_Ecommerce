@@ -17,6 +17,7 @@ try {
 }
 server.use(express.json());
 server.use(cookieParser());
+server.use(express.urlencoded({ extended: true }));
 // For open API specification(swagger)
 server.use("/api-docs", swagger.serve, swagger.setup(apiDocs));
 
@@ -26,6 +27,5 @@ server.use("/api/users", userRouter);
 // Server Port
 const port = process.env.PORT || 3000;
 server.listen(port, () => {
-  dbConnection();
   console.log("Server is running on port", port);
 });

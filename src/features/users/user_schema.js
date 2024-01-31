@@ -1,19 +1,23 @@
 import mongoose from "mongoose";
 //  Defining schema for User
 const userSchema = new mongoose.Schema({
-  fname: { type: String, required: true },
-  lname: { type: String, required: true },
+  fname: { type: String, required: [true, "First Name Required"] },
+  lname: { type: String, required: [true, "Last Name Required"] },
   email: {
     type: String,
-    required: true,
+    required: [true, "Email Required"],
     unique: true,
   },
   mobile: {
     type: String,
-    required: true,
+    required: [true, "mobile Number Required"],
     unique: true,
   },
-  password: { type: String, required: true, minLength: 8, maxLength: 25 },
+  password: {
+    type: String,
+    required: [true, "Password Required"],
+    minLength: 8,
+  },
   date: { type: Date, default: Date.now },
 });
 

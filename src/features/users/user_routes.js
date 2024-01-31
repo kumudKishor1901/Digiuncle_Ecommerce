@@ -8,7 +8,7 @@ const userController = new UserController();
 
 const userRouter = express.Router();
 // Adding a user in the Database
-userRouter.post("/register", userCheck, userController.register);
+userRouter.post("/register", validation, userCheck, userController.register);
 userRouter.post("/login", userController.login);
 
 userRouter.get("/home", auth, (req, res) => {
