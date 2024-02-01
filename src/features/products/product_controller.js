@@ -9,38 +9,44 @@ export default class ProductController {
         brand,
         description,
         price,
-        images,
+
         category,
         stock,
         size,
         rating,
         review,
       } = req.body;
+      let file = req.file;
       let product = {
         title,
         brand,
         description,
         price,
-        images,
+        images: file.filename,
         category,
         stock,
         size,
         rating,
         review,
       };
+
       let result = await productRepo.add(product);
       console.log(result);
       if (result) {
-        res
-          .status(201)
-          .json({
-            success: true,
-            message: "Product Added Successfully",
-            result,
-          });
+        res.status(201).json({
+          success: true,
+          message: "Product Added Successfully",
+          result,
+        });
+      } else {
+        res.status(400).json({ success: false, message: "Bad Request" });
       }
-      res.status(400).json({ success: false, message: "Bad Request" });
     } catch (err) {
+      res.status(500).json({
+        description: "Internal Server Error :" + err,
+        success: false,
+        messsage: "Error while Adding Product to Database",
+      });
       console.log(err.message);
     }
   }

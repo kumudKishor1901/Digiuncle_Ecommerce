@@ -12,7 +12,7 @@
       "description": "JWT Authorization header using the Bearer scheme"
     }
   },
-  "tags": ["Register User", "User Login"],
+
   "paths": {
     "/api/users/register": {
       "post": {
@@ -178,6 +178,103 @@
                   "type": "boolean",
                   "default": false
                 },
+                "message": {
+                  "type": "string",
+                  "default": "Internal Server Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/products/addProduct": {
+      "post": {
+        "summary": "Add a new product",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Product details",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string", "description": "Product title" },
+                "brand": { "type": "string", "description": "Product brand" },
+                "description": {
+                  "type": "string",
+                  "description": "Product description"
+                },
+                "price": { "type": "number", "description": "Product price" },
+                "images": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "public_id": {
+                        "type": "string",
+                        "description": "Image public ID"
+                      },
+                      "url": { "type": "string", "description": "Image URL" }
+                    }
+                  }
+                },
+                "category": {
+                  "type": "string",
+                  "description": "Product Category"
+                },
+                "stock": { "type": "number", "description": "Product stock" },
+                "size": {
+                  "type": "array",
+                  "items": { "type": "string", "description": "Product size" }
+                },
+                "rating": { "type": "number", "description": "Product rating" },
+                "review": [
+                  {
+                    "type": "string",
+                    "description": "Review ID"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Product added successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": { "type": "boolean" },
+                "message": {
+                  "type": "string",
+                  "default": "Product added successfully"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": { "type": "boolean" },
+                "message": {
+                  "type": "string",
+                  "default": "Bad Request"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": { "type": "boolean" },
                 "message": {
                   "type": "string",
                   "default": "Internal Server Error"
