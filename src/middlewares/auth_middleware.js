@@ -15,7 +15,6 @@ const auth = (req, res, next) => {
 
     // Check if the payload exists and has the necessary data
     if (payload && payload.userId) {
-      // Attach the payload to the request for use in subsequent middleware/routes
       req.user = payload;
       next();
     } else {

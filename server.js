@@ -2,11 +2,13 @@ import express, { json } from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import jwt from "jsonwebtoken";
+import productRouter from "./src/features/products/product_routes.js";
 import swagger from "swagger-ui-express";
 import userRouter from "./src/features/users/user_routes.js";
 import apiDocs from "./swagger.json" assert { type: "json" };
 import dbConnection from "./src/config/db_connection.js";
+import ProductModel from "./src/features/products/product_model.js";
+
 // Instantiating Express server
 const server = express();
 server.use(cors());
@@ -23,10 +25,13 @@ server.use("/api-docs", swagger.serve, swagger.setup(apiDocs));
 
 // Users Routes
 server.use("/api/users", userRouter);
+// Product Routes
+server.use("/api/products", productRouter);
 
 // Server Port
 const port = process.env.PORT || 3000;
 server.listen(port, () => {
   dbConnection();
+
   console.log("Server is running on port", port);
 });
