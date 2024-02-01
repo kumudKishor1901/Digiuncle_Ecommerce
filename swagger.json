@@ -209,19 +209,8 @@
                   "description": "Product description"
                 },
                 "price": { "type": "number", "description": "Product price" },
-                "images": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "public_id": {
-                        "type": "string",
-                        "description": "Image public ID"
-                      },
-                      "url": { "type": "string", "description": "Image URL" }
-                    }
-                  }
-                },
+                "images": { "type": "string", "description": "Image Name" },
+
                 "category": {
                   "type": "string",
                   "description": "Product Category"
